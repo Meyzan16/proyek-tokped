@@ -18,7 +18,7 @@ const RelatedProjects = async ({userId, projectId} : Props) => {
       filter(({ node } : {node: ProjectInterface  } ) => node?.id !== projectId);
 
 
-      // console.log(filteredProjects);
+      console.log(filteredProjects);
 
     if(filteredProjects?.length === 0) return null;
 
@@ -35,7 +35,7 @@ const RelatedProjects = async ({userId, projectId} : Props) => {
         {
           filteredProjects?.map(({node}: {node: ProjectInterface}) => (
 
-            <div className="flexCenter related_project-card drop-shadow-card">
+            <div key={node?.id} className="flexCenter related_project-card drop-shadow-card">
               <Link href={`/project/${node?.id}`} className="flexCenter group relative w-full h-full">
                 <Image 
                   src={node?.image} 

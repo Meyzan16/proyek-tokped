@@ -3,6 +3,7 @@ import { ProjectInterface } from "@/common.types";
 import { fetchAllProjects } from "@/lib/actions";
 import ProjectCard from "@/components/ProjectCard";
 import Categories from "@/components/Categories";
+import LoadMore from "@/components/LoadMore";
 type ProjectsSearch = {
     projectSearch: {
         edges: {node: ProjectInterface}[];
@@ -16,16 +17,21 @@ type ProjectsSearch = {
 }
 
 type SearchParams = {
-    category?: string;
+    category?: string ;
+    endcursor?: string ;
 }
 
 type Props = {
     searchParams: SearchParams;
 }
 
-const Home = async ({searchParams: { category }}: Props) => {
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+export const revalidate = 0;
 
-            const data = await fetchAllProjects(category) as ProjectsSearch;
+const Home = async ({searchParams: { category,endcursor }}: Props) => {
+
+            const data = await fetchAllProjects(category,endcursor) as ProjectsSearch;
 
             const projectsToDisplay = data?.projectSearch?.edges || [];
         
@@ -43,6 +49,8 @@ const Home = async ({searchParams: { category }}: Props) => {
                 )
         
             }
+
+            const pagination = data?.projectSearch?.pageInfo;
 
             console.log(projectsToDisplay);
 
@@ -72,6 +80,15 @@ const Home = async ({searchParams: { category }}: Props) => {
                 }
 
             </section>
+
+            <LoadMore 
+                startCursor={pagination.startCursor}
+                endCursor={pagination.endCursor}
+                hasPreviousPage={pagination.hasPreviousPage}
+                hasNextPage={pagination.hasNextPage}
+
+
+            />
 
         </section>
     )

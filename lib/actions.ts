@@ -16,6 +16,7 @@ const client = new GraphQLClient(apiUrl);
 export const fetchToken = async () => {
     try {
         const res = await fetch(`${serverUrl}/api/auth/token`);
+        console.log(res);
         return res.json();
     } catch (error) {
         throw error;

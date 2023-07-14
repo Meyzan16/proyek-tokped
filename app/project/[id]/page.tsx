@@ -16,7 +16,7 @@ const Project = async ({params : {id}} : {params:{id:string}} ) => {
         <p className="no-result-text">Failed to fetch project info</p>
     )
 
-    console.log(result)
+    console.log(result?.project)
 
     const projectDetails = result?.project;
 
