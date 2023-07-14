@@ -17,12 +17,22 @@ const ProfilePage = ({ user }: Props) => (
                 <p className="text-4xl font-bold mt-10">{user?.name}</p>
                 <p className="md:text-5xl text-3xl font-extrabold md:mt-10 mt-5 max-w-lg">I’m Developer Collection  Anime 👋</p>
                 
-               
+                <div className="flex mt-8 gap-5 w-full flex-wrap">
+                    <Button 
+                        title="Follow" 
+                        leftIcon="/plus-round.svg" 
+                        bgColor="bg-light-white-400 !w-max" 
+                        textColor="text-black-100" 
+                    />
+                    <Link href={`mailto:${user?.email}`}>
+                        <Button title="Collab Me" leftIcon="/email.svg" />
+                    </Link>
+                </div>
             </div>
 
             {user?.projects?.edges?.length > 0 ? (
                 <Image
-                    src={user?.projects?.edges[2]?.node?.image}
+                    src={user?.projects?.edges[0]?.node?.image}
                     alt="project image"
                     width={739}
                     height={554}
