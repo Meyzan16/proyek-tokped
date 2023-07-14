@@ -2,7 +2,7 @@ import React from "react";
 import { ProjectInterface } from "@/common.types";
 import { fetchAllProjects } from "@/lib/actions";
 import ProjectCard from "@/components/ProjectCard";
-
+import Categories from "@/components/Categories";
 type ProjectsSearch = {
     projectSearch: {
         edges: {node: ProjectInterface}[];
@@ -15,14 +15,17 @@ type ProjectsSearch = {
     }
 }
 
-const Home = async () => {
+type SearchParams = {
+    category?: string;
+}
 
-    // const [getall, setall] = useState([]);
+type Props = {
+    searchParams: SearchParams;
+}
 
+const Home = async ({searchParams: { category }}: Props) => {
 
-    // const getAll = async () => {
-
-            const data = await fetchAllProjects() as ProjectsSearch;
+            const data = await fetchAllProjects(category) as ProjectsSearch;
 
             const projectsToDisplay = data?.projectSearch?.edges || [];
         
@@ -30,7 +33,7 @@ const Home = async () => {
                 
                 return (
                     <section className="flexStart flex-col paddings">
-                        Categories
+                        <Categories />
         
                         <p className="no-result-text text-center">
                             No anime collection found, go create some first.
@@ -43,20 +46,9 @@ const Home = async () => {
 
             console.log(projectsToDisplay);
 
-    //         setall(data);
-
-    // }
-
-
-    // useEffect(()=> {
-    //     getAll();
-    // },[getAll]);
-
-
-
     return (
         <section className="flex-start flex-col paddings mb-16">
-            Categories
+            <Categories />
 
             <section className="projects-grid">
                 {
