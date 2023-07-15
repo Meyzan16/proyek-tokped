@@ -148,6 +148,7 @@ export const getProjectsOfUserQuery = `
             title
             image
             genre
+            category
             episode
           }
         }

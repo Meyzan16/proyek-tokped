@@ -11,6 +11,7 @@ import { createNewProject, updateProject } from "@/lib/actions";
 import { fetchToken } from "@/lib/actions";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from 'react-hot-toast'
 
 type Props = {
   type: string,
@@ -69,14 +70,15 @@ const ProjectForm = ({type , session, project} : Props) => {
         //create a new project
         await createNewProject(form, session?.user?.id, token);
 
-        router.push('/');
+        router.push(`/profile/${session?.user?.id}`);
+        toast.success(`collection anime created successfully`);
       }
 
       if(type === 'edit') {
         //edit a new project
         await updateProject(form, project?.id as string, token);
 
-        router.push('/');
+        router.push(`/project/${project?.id}`);
       }
 
 

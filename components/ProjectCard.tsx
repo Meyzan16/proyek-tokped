@@ -51,7 +51,7 @@ const ProjectCard = ({id,image,genre,episode,title,name,avatarUrl,userId}: Props
                         className='rounded-full'
                         alt='Profile Image'
                     />
-                    <p>episode ({episode})</p>
+                    <p>{name}</p>
                 </div>
             </Link>
     

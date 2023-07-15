@@ -20,7 +20,17 @@ const RelatedProjects = async ({userId, projectId} : Props) => {
 
       console.log(filteredProjects);
 
-    if(filteredProjects?.length === 0) return null;
+    if(filteredProjects?.length === 0) {
+      return (
+        <section className="flexStart flex-col paddings">
+            <p className="no-result-text text-center">
+                No anime collection found, go create some first.
+            </p>
+
+        </section>
+    )
+
+    } 
 
   return (
     <section className="flex flex-col mt-32 w-full">
@@ -52,11 +62,12 @@ const RelatedProjects = async ({userId, projectId} : Props) => {
               </Link>
               <div className='flexBetween w-full px-2 mt-3 font-semibold text-sm'>
                   
-                  <p>{node?.title} </p>
+                  <p>episode {node?.episode} </p>
                   
                   <div className='flexCenter gap-4'>
                       <div className='flexCenter gap-2'>
-                          <p className='text-sm'>{node?.genre}</p>
+                      <Image src="/hearth.svg" width={13} height={12} alt='heart' />
+                          <p className='text-sm'>{node?.category}</p>
                       </div>
                       <div className='flexCenter gap-2'>
                           <Image src="/eye.svg" width={13} height={12} alt='eye' />

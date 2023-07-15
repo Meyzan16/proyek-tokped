@@ -1,6 +1,7 @@
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import  { Toaster } from 'react-hot-toast';
 
 export const metadata = {
   title: 'Anime Collection',
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body>
       <Navbar />
         <main>
+         <Toaster />
           {children}
         </main>  
       <Footer />

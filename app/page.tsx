@@ -30,6 +30,7 @@ export const dynamicParams = true;
 export const revalidate = 0;
 
 const Home = async ({searchParams: { category,endcursor }}: Props) => {
+    
 
             const data = await fetchAllProjects(category,endcursor) as ProjectsSearch;
 
@@ -49,6 +50,8 @@ const Home = async ({searchParams: { category,endcursor }}: Props) => {
                 )
         
             }
+
+
 
             const pagination = data?.projectSearch?.pageInfo;
 

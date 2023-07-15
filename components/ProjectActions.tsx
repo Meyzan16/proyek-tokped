@@ -3,15 +3,20 @@
 import React, {useState} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { deleteProject, fetchToken } from '@/lib/actions'
+import { deleteProject, fetchToken,getProjectDetails } from '@/lib/actions'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-hot-toast'
+import { SessionInterface } from "@/common.types";
+import { ProjectInterface } from '@/common.types'
+
 
 type Props = {
-    projectId: string
+    projectId: string,
+    session: SessionInterface,
+    projectName?: string;
 }
 
-const ProjectActions = ({ projectId }: Props) => {
-
+const ProjectActions =  ( { session,  projectId , projectName }: Props) => {
 
     const [isDeleting, setIsDeleting] = useState<boolean>(false)
     const router = useRouter()
@@ -19,11 +24,18 @@ const ProjectActions = ({ projectId }: Props) => {
     const handleDeleteProject = async () => {
         setIsDeleting(true);
         
-        const {token} =  await fetchToken();
-
+        const {token} =  await fetchToken() ;
+        
+        
         try {
+            toast.success(`anime ${projectName} deleted successfully`);
+
             await deleteProject(projectId,token);
-            router.push('/');
+
+            router.push(`/profile/${session?.user?.id}`);
+
+
+
         } catch (error) {
             throw error;
         } finally {
