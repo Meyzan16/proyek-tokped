@@ -15,7 +15,12 @@ const ProfilePage = ({ user }: Props) => (
             <div className='flex items-start flex-col w-full'>
                 <Image src={user?.avatarUrl} width={100} height={100} className="rounded-full" alt="user image" />
                 <p className="text-4xl font-bold mt-10">{user?.name}</p>
-                <p className="md:text-5xl text-3xl font-extrabold md:mt-10 mt-5 max-w-lg">I’m Developer Collection  Anime 👋</p>
+                <p className="md:text-5xl text-3xl font-extrabold md:mt-10 mt-5 max-w-lg leading-normal">I’m developer collection  
+                    <span>
+                        {" "}
+                        anime 👋
+                    </span>
+                </p>
                 
                 <div className="flex mt-8 gap-5 w-full flex-wrap">
                     <Button 
@@ -28,16 +33,19 @@ const ProfilePage = ({ user }: Props) => (
                         <Button title="Collab Me" leftIcon="/email.svg" />
                     </Link>
                 </div>
+
             </div>
 
             {user?.projects?.edges?.length > 0 ? (
-                <Image
-                    src={user?.projects?.edges[0]?.node?.image}
-                    alt="project image"
-                    width={739}
-                    height={554}
-                    className='rounded-xl object-contain'
-                />
+                
+                    <Image
+                        src={user?.projects?.edges[0]?.node?.image}
+                        alt="project image"
+                        width={739}
+                        height={554}
+                        className='hidden md:flex rounded-xl object-contain'
+                    />
+               
             ) : (
                 <Image
                     src="/profile-post.png"
