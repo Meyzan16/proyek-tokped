@@ -1,9 +1,11 @@
+import type { InferGetServerSidePropsType } from "next";
 import React from "react";
 import { ProjectInterface } from "@/common.types";
 import { fetchAllProjects } from "@/lib/actions";
 import ProjectCard from "@/components/ProjectCard";
 import Categories from "@/components/Categories";
 import LoadMore from "@/components/LoadMore";
+
 type ProjectsSearch = {
     projectSearch: {
         edges: {node: ProjectInterface}[];
@@ -30,7 +32,6 @@ export const dynamicParams = true;
 export const revalidate = 0;
 
 const Home = async ({searchParams: { category,endcursor }}: Props) => {
-    
 
             const data = await fetchAllProjects(category,endcursor) as ProjectsSearch;
 

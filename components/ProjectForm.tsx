@@ -70,7 +70,8 @@ const ProjectForm = ({type , session, project} : Props) => {
         //create a new project
         await createNewProject(form, session?.user?.id, token);
 
-        router.push(`/profile/${session?.user?.id}`);
+        // router.push(`/profile/${session?.user?.id}`);
+        router.push('/');
         toast.success(`collection anime created successfully`);
       }
 

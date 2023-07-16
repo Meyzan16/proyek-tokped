@@ -10,15 +10,17 @@
     "One Piece",
     "Naruto",
     "Konan",
-    "UI/UX",
-    "Game Dev",
-    "DevOps",
-    "Data Science",
-    "Machine Learning",
-    "Cybersecurity",
-    "Blockchain",
-    "E-commerce",
-    "Chatbots"
+    "Hunter",
+    "Kingdom",
+    "Arslan Senki",
+    "Dearh note",
+    "Jujutsu keisen",
+    "Demon slayer",
+    "Hiromiya",
+    "Sumatsu no valkrei",
+    "Bakugan",
+    "Yo gi oh",
+    "Tamiya"
   ]
 
   export const genreFilters = [
@@ -28,8 +30,8 @@
     "Seinen",
     "Harem",
     "Harem Reverse",
-    "Shoujo-ai (Girl’s Love)",
-    "Shounen-ai (Boy’s Love)",
+    "Shoujo-ai",
+    "Shounen-ai",
     "Ecchi"
   ]
   

@@ -59,6 +59,8 @@ const ProfilePage = ({ user }: Props) => (
 
        <section className="flexStart flex-col lg:mt-28 mt-16 w-full">
            <p className="w-full text-left text-lg font-semibold">Recent Collection Anime</p>
+
+           
            
            <div className="profile_projects">
                 {user?.projects?.edges?.map(
