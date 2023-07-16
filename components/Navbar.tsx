@@ -17,9 +17,9 @@ const Navbar = async () => {
       <div className='flex-1 flexStart gap-10'>
         <Link href="/">
             <span className=" bg-gradient-to-r text-2xl font-semibold  
-             from-amber-500 via-orange-600
-              to-yellow-500 bg-clip-text text-transparent">
-                Anime
+             from-primary-purple via-orange-600
+              to-primary-purple bg-clip-text text-transparent">
+                Anime Collection
             </span>
         </Link>
 
@@ -34,6 +34,10 @@ const Navbar = async () => {
                         
                         <Link href="/create-project">
                           <Button title="Create Anime" />
+                        </Link>
+
+                        <Link href="/create-collection">
+                          <Button title="Create Collection" />
                         </Link>
                     </>
                 ) : (

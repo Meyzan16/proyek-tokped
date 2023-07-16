@@ -52,8 +52,6 @@ const Home = async ({searchParams: { category,endcursor }}: Props) => {
         
             }
 
-
-
             const pagination = data?.projectSearch?.pageInfo;
 
             console.log(projectsToDisplay);

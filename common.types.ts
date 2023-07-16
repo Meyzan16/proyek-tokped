@@ -27,6 +27,18 @@ export interface ProjectInterface {
     };
 }
 
+export interface CategoryInterface {
+    title: string;
+    description: string;
+    id: string;
+    createdBy: {
+      name: string;
+      email: string;
+      avatarUrl: string;
+      id: string;
+    };
+}
+
 export interface UserProfile {
     id: string;
     name: string;
@@ -63,4 +75,10 @@ export interface ProjectForm {
   episode: string;
   liveSiteUrl: string;
   category: string;
+}
+
+
+export interface CategoryForm {
+  title: string;
+  description: string;
 }

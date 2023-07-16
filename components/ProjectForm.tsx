@@ -15,7 +15,7 @@ import { toast } from 'react-hot-toast'
 
 type Props = {
   type: string,
-  session: SessionInterface,
+  session: SessionInterface;
   project?: ProjectInterface;
 }
 
@@ -69,7 +69,7 @@ const ProjectForm = ({type , session, project} : Props) => {
       if(type === 'create') {
         //create a new project
         await createNewProject(form, session?.user?.id, token);
-
+        
         // router.push(`/profile/${session?.user?.id}`);
         router.push('/');
         toast.success(`collection anime created successfully`);
@@ -146,6 +146,8 @@ const ProjectForm = ({type , session, project} : Props) => {
         setState ={(value) => handleStateChange('liveSiteUrl', value)}
       />
 
+      
+
       <div className="flex flex-row w-full gap-4">
         <CustomMenu 
             title="genre"
@@ -161,10 +163,6 @@ const ProjectForm = ({type , session, project} : Props) => {
             setState={(value) => handleStateChange('category', value)}
         />
       </div>
-
-
-
-      
 
       <div className="flexStart w-full gap-4">
         <Button 

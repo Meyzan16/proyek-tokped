@@ -1,5 +1,5 @@
-import { ProjectForm } from '@/common.types';
-import { createUserMutation, getUserQuery, createProjectMutation, projectsQuery, getProjectByIdQuery, getProjectsOfUserQuery, deleteProjectMutation, updateProjectMutation } from '@/graphql';
+import { ProjectForm,CategoryForm } from '@/common.types';
+import { createUserMutation,createCategoryMutation, getUserQuery, createProjectMutation, projectsQuery, getProjectByIdQuery, getProjectsOfUserQuery, deleteProjectMutation, updateProjectMutation } from '@/graphql';
 import  { GraphQLClient} from 'graphql-request';
 
 
@@ -88,23 +88,27 @@ export const createNewProject = async (form:ProjectForm, creatorId: string, toke
 }
 
 
+//model create a new category
+export const createCategoryNew = async(form:CategoryForm, creatorId: string, token:string) => 
+{
+    client.setHeader("Authorization", `Bearer ${token}`);
+    const variables = {
+        input: {
+            ...form,
+            createdBy: {
+                link: creatorId,
+            }
+        }
+    }
+    return makeGraphQLRequest(createCategoryMutation, variables);
 
-// export const createCategoryNew = async(categories: string, token:string) => 
-// {
-//     client.setHeader("Authorization", `Bearer ${token}`);
-//     const variables = {
-//         input: {
-//             categories
-//         }
-//     }
-//     return makeGraphQLRequest(createCategoryMutation, variables);
+}
 
-// }
+
 
 // get all projects
 export const fetchAllProjects = async (category?: string, endcursor?: string) => {
-    client.setHeader('x-api-key', apiKey);
-     
+    client.setHeader('x-api-key', apiKey);  
     return makeGraphQLRequest(projectsQuery, {category,endcursor});
 }
 

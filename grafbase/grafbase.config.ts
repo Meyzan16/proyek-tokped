@@ -13,15 +13,15 @@ const User = g.model('User', {
 
 //@ts-ignore
 const Project = g.model('Project', {
-  title: g.string().length({min:3}),
+  title: g.string().length({min:2}),
   description: g.string(),
   image: g.string(),
   genre: g.string(),
   episode: g.string(),
   liveSiteUrl: g.string(),
   category: g.string().search(),
-  // CategoryRelation: g.relation(()=>Category),
-  createdBy: g.relation(() => User),
+  categoryBy: g.relation(() => Category),  
+  createdBy: g.relation(() => User),  
 }).auth((rules) => {
   rules.public().read()
   rules.private().create().update().delete
@@ -29,6 +29,9 @@ const Project = g.model('Project', {
 
 const Category = g.model('Category', {
   title: g.string(),
+  description: g.string(),
+  projects: g.relation(() => Project).list().optional(),  
+  createdBy: g.relation(() => User),
 })
 
 const jwt = auth.JWT(

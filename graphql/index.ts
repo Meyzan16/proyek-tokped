@@ -46,8 +46,13 @@ export const createCategoryMutation = `
 	mutation CreateCategory($input: CategoryCreateInput!) {
 		categoryCreate(input: $input) {
 			category {
-				title
 				id
+				title
+        description
+        createdBy {
+					email
+					name
+				}
 			}
 		}
 	}
